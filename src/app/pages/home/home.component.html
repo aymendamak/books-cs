@@ -1,31 +1,43 @@
-<section class="hero">
-  <div class="hero-body flex flex-col items-center mt-4">
-    <p class="title text-2xl text-black">Welcome to our Book Library</p>
-    <p class="subtitle text-xl text-black">Discover your next great read</p>
+<div class="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-20">
+  <div class="container mx-auto text-center">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">
+      Welcome to our Book Library
+    </h1>
+    <p class="text-xl md:text-2xl mb-8">Discover your next great read</p>
   </div>
-</section>
+</div>
 
-<div class="flex flex-col md:flex-row justify-center gap-8 p-8 pt-32 h-screen">
-  <div
-    class="card w-96 h-60 bg-primary text-primary-content shadow-xl hover:shadow-2xl transition-shadow duration-300"
-  >
-    <div class="card-body">
-      <h2 class="card-title text-3xl">Books</h2>
-      <p>Explore our vast collection of books across various genres.</p>
-      <div class="card-actions justify-end">
-        <button class="btn" routerLink="/books">View Books</button>
+<div id="explore" class="container mx-auto px-4 py-16">
+  <div class="grid md:grid-cols-2 gap-8">
+    <div
+      class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+    >
+      <div class="p-8">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">Books</h2>
+        <p class="text-gray-600 mb-6">
+          Explore our vast collection of books across various genres.
+        </p>
+        <a
+          routerLink="/books"
+          class="inline-block bg-purple-600 text-white py-2 px-6 rounded-md hover:bg-purple-700 transition duration-300"
+          >View Books</a
+        >
       </div>
     </div>
-  </div>
 
-  <div
-    class="card w-96 h-60 bg-secondary text-secondary-content shadow-xl hover:shadow-2xl transition-shadow duration-300"
-  >
-    <div class="card-body">
-      <h2 class="card-title text-3xl">Authors</h2>
-      <p>Discover talented authors and their remarkable works.</p>
-      <div class="card-actions justify-end">
-        <button class="btn" routerLink="/authors">View Authors</button>
+    <div
+      class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+    >
+      <div class="p-8">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">Authors</h2>
+        <p class="text-gray-600 mb-6">
+          Discover talented authors and their remarkable works.
+        </p>
+        <a
+          routerLink="/authors"
+          class="inline-block bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-300"
+          >View Authors</a
+        >
       </div>
     </div>
   </div>
