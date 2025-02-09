@@ -1,0 +1,46 @@
+<h3 class="font-bold text-2xl mb-4 text-white">
+  {{ modalService.currentBook()?.title }}
+</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <div class="col-span-1">
+    <img
+      [src]="
+        'https://picsum.photos/seed/' +
+        modalService.currentBook()?.id +
+        '/300/400'
+      "
+      [alt]="modalService.currentBook()?.title"
+      class="w-full rounded-lg shadow-md"
+    />
+  </div>
+  <div class="col-span-2">
+    <p class="text-lg mb-2 text-white">
+      <span class="font-semibold text-white">Author:</span>
+      {{ modalService.currentBook()?.author }}
+    </p>
+    <p class="mb-4 text-white">
+      {{ modalService.currentBook()?.description }}
+    </p>
+    <div class="flex flex-wrap gap-2 mb-4">
+      <span class="badge badge-primary">Fiction</span>
+      <span class="badge badge-secondary">Bestseller</span>
+      <span class="badge badge-accent">Award-winning</span>
+    </div>
+    <!-- <p class="text-sm text-gray-500 mb-2">
+        <span class="font-semibold">Published:</span>
+        {{ modalService.currentBook()?.publishDate | date : "mediumDate" }}
+      </p>
+      <p class="text-sm text-gray-500">
+        <span class="font-semibold">ISBN:</span>
+        {{ modalService.currentBook()?.isbn }}
+      </p> -->
+  </div>
+</div>
+<div class="modal-action">
+  <button
+    class="btn btn-primary text-white"
+    (click)="modalService.closeModal()"
+  >
+    Close
+  </button>
+</div>
