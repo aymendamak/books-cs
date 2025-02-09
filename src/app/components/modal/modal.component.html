@@ -1,0 +1,12 @@
+<div *ngIf="modalService.isOpen()" class="modal modal-open">
+  <div class="modal-box max-w-3xl">
+    <ng-container [ngSwitch]="modalService.modalType()">
+      <ng-container *ngSwitchCase="'details'">
+        <app-details-modal></app-details-modal>
+      </ng-container>
+      <ng-container *ngSwitchCase="'create'">
+        <app-create-modal></app-create-modal>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
