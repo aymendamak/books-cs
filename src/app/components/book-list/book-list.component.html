@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="flex flex-row justify-between p-8 w-screen">
+    <h2 class="text-4xl font-bold text-black items-center justify-center">
+      Book List
+    </h2>
+    <button
+      class="btn btn-primary items-center justify-center"
+      (click)="openCreateModal()"
+    >
+      Create New Book
+    </button>
+  </div>
+  <div class="flex items-center justify-center w-screen p-4">
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <li *ngFor="let book of bookService.books()">
+        <app-book-item [book]="book"></app-book-item>
+      </li>
+    </ul>
+  </div>
+</div>
