@@ -1,0 +1,32 @@
+<section class="hero">
+  <div class="hero-body flex flex-col items-center mt-4">
+    <p class="title text-2xl text-black">Welcome to our Book Library</p>
+    <p class="subtitle text-xl text-black">Discover your next great read</p>
+  </div>
+</section>
+
+<div class="flex flex-col md:flex-row justify-center gap-8 p-8 pt-32 h-screen">
+  <div
+    class="card w-96 h-60 bg-primary text-primary-content shadow-xl hover:shadow-2xl transition-shadow duration-300"
+  >
+    <div class="card-body">
+      <h2 class="card-title text-3xl">Books</h2>
+      <p>Explore our vast collection of books across various genres.</p>
+      <div class="card-actions justify-end">
+        <button class="btn" routerLink="/books">View Books</button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="card w-96 h-60 bg-secondary text-secondary-content shadow-xl hover:shadow-2xl transition-shadow duration-300"
+  >
+    <div class="card-body">
+      <h2 class="card-title text-3xl">Authors</h2>
+      <p>Discover talented authors and their remarkable works.</p>
+      <div class="card-actions justify-end">
+        <button class="btn" routerLink="/authors">View Authors</button>
+      </div>
+    </div>
+  </div>
+</div>
