@@ -1,5 +1,7 @@
-<div class="flex flex-col gap-4 max-w-3xl">
-  <label class="input input-bordered flex items-center gap-2">
+<div class="flex flex-col gap-6 max-w-3xl">
+  <label
+    class="input input-bordered flex items-center gap-2 bg-white text-black shadow-lg"
+  >
     <input type="text" class="grow" placeholder="Search" />
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +16,9 @@
       />
     </svg>
   </label>
-  <label class="input input-bordered flex items-center gap-2">
+  <label
+    class="input input-bordered flex items-center gap-2 bg-white text-black shadow-lg"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 16"
@@ -30,7 +34,9 @@
     </svg>
     <input type="text" class="grow" placeholder="Email" />
   </label>
-  <label class="input input-bordered flex items-center gap-2">
+  <label
+    class="input input-bordered flex items-center gap-2 bg-white text-black shadow-lg"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 16"
@@ -43,7 +49,9 @@
     </svg>
     <input type="text" class="grow" placeholder="Username" />
   </label>
-  <label class="input input-bordered flex items-center gap-2">
+  <label
+    class="input input-bordered flex items-center gap-2 bg-white text-black shadow-lg"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 16"
@@ -60,10 +68,16 @@
   </label>
   <div class="modal-action">
     <button
-      class="btn btn-primary text-white"
+      class="btn btn-ghost text-white"
       (click)="modalService.closeModal()"
     >
       Close
+    </button>
+    <button
+      class="btn inline-block bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-300 border-none"
+      (click)="modalService.closeModal()"
+    >
+      Create
     </button>
   </div>
 </div>
