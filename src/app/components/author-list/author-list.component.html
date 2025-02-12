@@ -12,7 +12,7 @@
   </div>
   <div class="flex items-center justify-center w-screen p-4">
     <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <li *ngFor="let author of authorService.authors()">
+      <li *ngFor="let author of authors()">
         <app-author-item [author]="author"></app-author-item>
       </li>
     </ul>

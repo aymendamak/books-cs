@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BookService } from '../../services/book.service';
 import { BookItemComponent } from '../book-item/book-item.component';
 import { ModalService } from '../../services/modal.service';
@@ -9,11 +9,15 @@ import { ModalService } from '../../services/modal.service';
   imports: [CommonModule, BookItemComponent],
   templateUrl: './book-list.component.html',
 })
-export class BookListComponent {
+export class BookListComponent implements OnInit {
   bookService = inject(BookService);
   modalService = inject(ModalService);
+  books = this.bookService.books;
 
   openCreateModal() {
-    this.modalService.openCreateModal();
+    this.modalService.openCreateModal('book');
+  }
+  ngOnInit() {
+    this.bookService.getAllBooks();
   }
 }

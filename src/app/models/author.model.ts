@@ -3,5 +3,4 @@ export interface Author {
   name: string;
   books?: string[];
   biography: string;
-  birthDate: Date;
 }
