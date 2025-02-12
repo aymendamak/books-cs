@@ -10,6 +10,8 @@ export class AuthorService {
   constructor(private http: HttpClient) {}
 
   private authorsSignal = signal<Author[]>([]);
+  private errorSignal = signal<string | null>(null);
+  public error = computed(() => this.errorSignal());
 
   authors = computed(() => this.authorsSignal());
 
@@ -22,9 +24,17 @@ export class AuthorService {
   getAllAuthors() {
     this.http
       .get<{ data: Author[] }>('http://localhost:8080/authors')
-      .subscribe((response) => {
-        this.authorsSignal.set(response.data);
-        console.log('authorsSignal', this.authorsSignal());
+      .subscribe({
+        next: (response) => {
+          this.authorsSignal.set(response.data);
+        },
+        error: (error) => {
+          console.error('Error fetching authors:', error);
+          this.errorSignal.set(
+            error.error?.errors?.[0]?.msg || 'Failed to fetch authors'
+          );
+          this.authorsSignal.set([]);
+        },
       });
   }
 
@@ -43,9 +53,11 @@ export class AuthorService {
         tap({
           next: (response) => {
             this.authorsSignal.update((authors) => [...authors, response.data]);
+            this.errorSignal.set(null);
           },
           error: (error) => {
             console.error('Error adding author:', error);
+            this.errorSignal.set(error.error.errors[0].msg);
           },
         })
       );
@@ -63,5 +75,9 @@ export class AuthorService {
     this.authorsSignal.update((authors) =>
       authors.filter((author) => author.id !== id)
     );
+  }
+
+  clearError() {
+    this.errorSignal.set(null);
   }
 }

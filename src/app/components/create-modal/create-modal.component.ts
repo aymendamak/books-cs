@@ -17,7 +17,8 @@ export class CreateModalComponent implements OnInit {
   modalAction = this.modalService.modalAction();
   authors = this.authorService.authors;
 
-  error = this.bookService.error;
+  bookError = this.bookService.error;
+  authorError = this.authorService.error;
 
   public myForm!: FormGroup;
 
@@ -26,7 +27,6 @@ export class CreateModalComponent implements OnInit {
       this.myForm = new FormGroup({
         name: new FormControl(''),
         biography: new FormControl(''),
-        authorId: new FormControl(''),
       });
     } else if (this.modalAction === 'book') {
       this.authorService.getAllAuthors();
@@ -43,6 +43,7 @@ export class CreateModalComponent implements OnInit {
     this.modalService.closeModal();
     this.myForm.reset();
     this.bookService.clearError();
+    this.authorService.clearError();
   }
 
   onSubmit(form: FormGroup) {
