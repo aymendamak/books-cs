@@ -1,0 +1,33 @@
+<div class="flex justify-center items-center p-16">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+    <div class="flex flex-col gap-6 w-full">
+      <label
+        class="input input-bordered flex items-center gap-2 bg-white text-black shadow-lg"
+      >
+        <input
+          type="text"
+          class="grow"
+          placeholder="Username"
+          formControlName="username"
+          required
+        />
+      </label>
+      <label
+        class="input input-bordered flex items-center gap-2 bg-white text-black shadow-lg"
+      >
+        <input
+          type="password"
+          class="grow"
+          required
+          placeholder="Password"
+          formControlName="password"
+        />
+      </label>
+      <button
+        class="btn inline-block bg-blue-600 text-white py-2 px-6 rounded-md border-none hover:bg-blue-700 transition duration-300"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+</div>

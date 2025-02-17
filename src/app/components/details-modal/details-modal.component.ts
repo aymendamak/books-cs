@@ -7,5 +7,8 @@ import { ModalService } from '../../services/modal.service';
   templateUrl: './details-modal.component.html',
 })
 export class DetailsModalComponent {
-  constructor(public modalService: ModalService) {}
+  currentBook;
+  constructor(public modalService: ModalService) {
+    this.currentBook = this.modalService.currentBook();
+  }
 }
