@@ -3,7 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { BookComponent } from './pages/book/book.component';
 import { AuthorComponent } from './pages/author/author.component';
 import { LoginComponent } from './pages/login/login.component';
-import { authGuard } from './services/auth.guard';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
