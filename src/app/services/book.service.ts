@@ -57,7 +57,6 @@ export class BookService {
       .get<{ data: Book[] }>('http://localhost:8080/books')
       .subscribe((response) => {
         this.booksSignal.set(response.data);
-        console.log('booksSignal', this.booksSignal());
       });
   }
 

@@ -43,11 +43,16 @@ export class AuthorService {
       ...author,
       id: undefined, // Remove any client-side ID to let server assign it
     };
-    console.log('authorToCreate', authorToCreate);
+    const authToken = localStorage.getItem('token');
     return this.http
       .post<{ data: Author }>(
         'http://localhost:8080/authors/create',
-        authorToCreate
+        authorToCreate,
+        {
+          headers: {
+            Authorization: authToken || '',
+          },
+        }
       )
       .pipe(
         tap({

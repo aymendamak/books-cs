@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Author } from '../../models/author.model';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-author-item',
@@ -9,4 +10,10 @@ import { Author } from '../../models/author.model';
 })
 export class AuthorItemComponent {
   @Input() author!: Author;
+
+  modalService = inject(ModalService);
+
+  openModal() {
+    this.modalService.openAuthorDetailsModal(this.author);
+  }
 }

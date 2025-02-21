@@ -16,7 +16,7 @@ export class BookItemComponent {
   constructor(public modalService: ModalService) {}
 
   openModal() {
-    this.modalService.openDetailsModal(this.book);
+    this.modalService.openBookDetailsModal(this.book);
   }
 
   // closeModal() {

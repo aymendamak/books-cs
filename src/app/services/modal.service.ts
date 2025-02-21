@@ -15,9 +15,16 @@ export class ModalService {
 
   authorService = inject(AuthorService);
   bookService = inject(BookService);
+  currentAuthor = signal<Author | null>(null);
 
-  openDetailsModal(book: Book) {
+  openBookDetailsModal(book: Book) {
     this.currentBook.set(book);
+    this.modalType.set('details');
+    this.isOpen.set(true);
+  }
+
+  openAuthorDetailsModal(author: Author) {
+    this.currentAuthor.set(author);
     this.modalType.set('details');
     this.isOpen.set(true);
   }
@@ -49,10 +56,16 @@ export class ModalService {
   }
 
   createNewBook(book: Book) {
-    this.bookService.addBook(book).subscribe((response) => {
-      this.isOpen.set(false);
-      this.modalType.set(null);
-      this.modalAction.set(null);
+    this.bookService.addBook(book).subscribe({
+      next: (response) => {
+        this.isOpen.set(false);
+        this.modalType.set(null);
+        this.modalAction.set(null);
+      },
+      error: (error) => {
+        console.error('Error creating book:', error);
+      },
+      complete: () => {},
     });
   }
 }

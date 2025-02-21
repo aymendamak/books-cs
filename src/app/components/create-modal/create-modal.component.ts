@@ -47,7 +47,6 @@ export class CreateModalComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    console.log(this.modalAction);
     if (this.modalAction === 'author') {
       this.modalService.createNewAuthor(form.value);
     } else if (this.modalAction === 'book') {
