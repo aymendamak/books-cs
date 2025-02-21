@@ -29,11 +29,14 @@
           modalService.currentAuthor()?.biography
       }}
     </p>
+    @if (modalService.currentBook()) {
     <div class="flex flex-wrap gap-2 mb-4">
       <span class="badge badge-primary">Fiction</span>
       <span class="badge badge-secondary">Bestseller</span>
       <span class="badge badge-accent">Award-winning</span>
     </div>
+
+    }
   </div>
 </div>
 <div class="modal-action">
