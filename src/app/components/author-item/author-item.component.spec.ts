@@ -1,23 +1,43 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {
+  createHostFactory,
+  mockProvider,
+  Spectator,
+  SpectatorHost,
+} from '@ngneat/spectator';
 import { AuthorItemComponent } from './author-item.component';
+import { ModalService } from '../../services/modal.service';
 
 describe('AuthorItemComponent', () => {
-  let component: AuthorItemComponent;
-  let fixture: ComponentFixture<AuthorItemComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AuthorItemComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(AuthorItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let spectator: SpectatorHost<AuthorItemComponent>;
+  const createHost = createHostFactory({
+    component: AuthorItemComponent,
+    providers: [
+      mockProvider(ModalService, {
+        openAuthorDetailsModal: () => {},
+      }),
+    ],
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  beforeEach(() => {
+    spectator = createHost(
+      `<app-author-item [author]="author"></app-author-item>`
+    );
+  });
+
+  it('should display the correct infos for user', () => {
+    spectator = createHost(
+      `<app-author-item [author]="author"></app-author-item>`,
+      {
+        hostProps: {
+          author: {
+            name: 'John Doe',
+            biography: 'this is me',
+          },
+        },
+      }
+    );
+
+    expect(spectator.query('.author-name')?.nodeValue).toBe('John Doe');
+    expect(spectator.query('.author-biography')?.nodeValue).toBe('this is me');
   });
 });
