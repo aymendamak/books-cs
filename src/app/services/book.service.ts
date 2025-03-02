@@ -53,11 +53,16 @@ export class BookService {
   public books = computed(() => this.booksSignal());
 
   getAllBooks() {
-    this.http
-      .get<{ data: Book[] }>('http://localhost:8080/books')
-      .subscribe((response) => {
+    this.http.get<{ data: Book[] }>('http://localhost:8080/books').subscribe({
+      next: (response) => {
         this.booksSignal.set(response.data);
-      });
+      },
+      error: (error) => {
+        console.error('Error fetching books:', error);
+        this.errorSignal.set(error.error.errors[0].msg);
+        this.booksSignal.set([]);
+      },
+    });
   }
 
   getBookById(id: number) {

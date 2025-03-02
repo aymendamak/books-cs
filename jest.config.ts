@@ -13,7 +13,7 @@ module.exports = {
   moduleNameMapper: {
     '\\.(css|scss|sass|less)$': 'identity-obj-proxy',
   },
-  collectCoverage: false,
+  collectCoverage: true,
   coverageReporters: ['html', 'lcov', 'text-summary'],
   coverageDirectory: 'coverage/jest',
 };
