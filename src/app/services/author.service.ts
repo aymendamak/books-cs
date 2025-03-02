@@ -63,6 +63,7 @@ export class AuthorService {
           error: (error) => {
             console.error('Error adding author:', error);
             this.errorSignal.set(error.error.errors[0].msg);
+            this.authorsSignal.set([]);
           },
         })
       );
